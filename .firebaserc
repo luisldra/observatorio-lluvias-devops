@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "CAMBIAR-id-proyecto-firebase"
+  },
+  "targets": {
+    "CAMBIAR-id-proyecto-firebase": {
+      "hosting": {
+        "dev": ["CAMBIAR-observatorio-dev"],
+        "qa": ["CAMBIAR-observatorio-qa"],
+        "prod": ["CAMBIAR-observatorio-prod"]
+      }
+    }
+  }
+}
