@@ -15,7 +15,13 @@ echo "==> Pruebas de humo [$ENVIRONMENT]"
 page="$(curl -fsS --max-time 30 "$FRONTEND_URL/")" || fail "el frontend $FRONTEND_URL no responde"
 case "$page" in *'id="root"'*) ok "frontend responde por HTTPS" ;; *) fail "el frontend no contiene la app" ;; esac
 
-health="$(curl -fsS --max-time 60 "$API_URL/actuator/health")" || fail "la API $API_URL no responde"
+# Render Free suspende la API por inactividad; el primer request puede tardar ~1-2 min en despertarla.
+health=""
+for attempt in 1 2 3; do
+  health="$(curl -fsS --max-time 60 "$API_URL/actuator/health" 2>/dev/null)" && break
+  echo "  ...API sin respuesta (intento $attempt/3), reintentando"
+done
+[ -n "$health" ] || fail "la API $API_URL no responde"
 case "$health" in *'"status":"UP"'*) ok "API health UP" ;; *) fail "health: $health" ;; esac
 
 curl -fsS --max-time 30 "$API_URL/api/dashboard/summary" > /dev/null || fail "GET /api/dashboard/summary"

@@ -99,7 +99,8 @@ La URL pública de cada API (`https://observatorio-api-dev.onrender.com` o simil
 4. Editar `deploy/<ambiente>.env` → `FRONTEND_URL=https://<id-sitio>.web.app`.
 5. Cuenta de servicio para Jenkins:
    - Google Cloud Console (mismo proyecto) → *IAM y administración → Cuentas de servicio → Crear*.
-   - Roles: **Firebase Hosting Admin** y **API Keys Viewer**.
+   - Roles: **Firebase Hosting Admin**, **API Keys Viewer** y **Service Usage Consumer**
+     (sin este último `firebase deploy` falla con `Permission denied to get service [firebasehosting.googleapis.com]`).
    - *Claves → Agregar clave → JSON*. Guarde el archivo **fuera del repositorio**.
 
 ## Paso 5. Jenkins (local con Docker)
