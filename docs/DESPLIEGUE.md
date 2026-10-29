@@ -53,6 +53,9 @@ Ningún secreto se guarda en el repositorio.
 3. De cada rama, copiar en *Connection Details* (conexión directa, no la *pooled*):
    - host (`ep-xxxx.region.aws.neon.tech`), base de datos, usuario y contraseña.
 4. La URL JDBC tiene la forma `jdbc:postgresql://<host>/<base>?sslmode=require`.
+   Neon muestra por defecto `postgresql://usuario:clave@ep-xxx-pooler.../neondb?sslmode=require&channel_binding=require`;
+   para Spring Boot: anteponer `jdbc:`, quitar `usuario:clave@` (van en variables aparte), quitar `-pooler` del host
+   y dejar solo `?sslmode=require`.
 
 Las tablas se crean solas al arrancar la API (`ddl-auto=update`).
 

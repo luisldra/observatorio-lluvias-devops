@@ -1,13 +1,13 @@
 {
   "projects": {
-    "default": "CAMBIAR-id-proyecto-firebase"
+    "default": "observatorio-lluvias-75ace"
   },
   "targets": {
-    "CAMBIAR-id-proyecto-firebase": {
+    "observatorio-lluvias-75ace": {
       "hosting": {
-        "dev": ["CAMBIAR-observatorio-dev"],
-        "qa": ["CAMBIAR-observatorio-qa"],
-        "prod": ["CAMBIAR-observatorio-prod"]
+        "dev": ["observatorio-dev-luisldra"],
+        "qa": ["observatorio-qa-luisldra"],
+        "prod": ["observatorio-prod-luisldra"]
       }
     }
   }
